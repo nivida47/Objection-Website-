@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Objection!!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f0e4;--card:#fffaf0;--ink:#2b2b2e;--mut:#7b7468;--gold:#b8924a;--line:#d9cdb5;--btn:#2b2b2e;--btnt:#f6f0e4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1e1e21;--card:#2a2a2e;--ink:#f5efe0;--mut:#a39d90;--gold:#d8b565;--line:#3d3d42;--btn:#d8b565;--btnt:#1e1e21}}
+:root[data-theme="dark"]{--bg:#1e1e21;--card:#2a2a2e;--ink:#f5efe0;--mut:#a39d90;--gold:#d8b565;--line:#3d3d42;--btn:#d8b565;--btnt:#1e1e21}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;transition:background .3s,color .3s}
+h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;margin:0}
+.wrap{max-width:880px;margin:0 auto;padding:20px}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;max-width:880px;margin:0 auto}
+.brand{font:900 1.2rem 'Playfair Display',serif;cursor:pointer;display:flex;gap:8px;align-items:center;color:var(--gold)}
+.tog{background:none;border:1px solid var(--line);color:var(--ink);width:42px;height:42px;font-size:1.1rem;cursor:pointer}
+.view{display:none;animation:in .5s ease both}.view.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero{text-align:center;padding:36px 0 24px}
+.hero h1{font-size:clamp(3rem,15vw,6rem);font-weight:900;letter-spacing:-2px}
+.hero h1 span{color:var(--gold)}
+.tag{font:italic 500 1.3rem 'Playfair Display',serif;color:var(--gold);margin:6px 0}
+.sub{font-style:italic;color:var(--mut)}
+.swing{display:inline-block;transform-origin:50% 0;animation:sw 4s ease-in-out infinite}
+@keyframes sw{50%{transform:rotate(6deg)}0%,100%{transform:rotate(-6deg)}}
+.btn{background:var(--btn);color:var(--btnt);border:2px solid var(--btn);padding:14px 28px;font:600 1rem Inter;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:.2s}
+.btn:hover:not(:disabled){transform:translateY(-3px);box-shadow:5px 5px 0 var(--gold)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.btn.big{font-size:1.2rem;padding:18px 40px}.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+.card{background:var(--card);border:1px solid var(--line);padding:22px;margin:16px 0}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.step{text-align:center}.step .n{font:900 2.4rem 'Playfair Display';color:var(--gold)}
+h2{font-size:1.9rem;margin:44px 0 12px;text-align:center}
+.hint{text-align:center;color:var(--mut);font-size:.85rem;margin-top:30px}.hint b{display:block;animation:bob 1.5s infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+details{border-bottom:1px solid var(--line);padding:14px 0}summary{cursor:pointer;font-weight:600}details p{color:var(--mut);margin:8px 0 0}
+textarea,input[type=text]{width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:12px;font:inherit;resize:vertical}
+textarea{min-height:130px;margin-top:8px}
+.pt{font:italic 900 1.6rem 'Playfair Display'}.small{font-size:.8rem;color:var(--mut)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.mini{background:none;border:1px solid var(--gold);color:var(--ink);padding:9px 14px;cursor:pointer;font:600 .85rem Inter}
+.mini.rec{background:#c0392b;color:#fff;border-color:#c0392b}
+.thumb{max-height:90px;margin-top:10px;border:1px solid var(--line)}
+.center{text-align:center;margin:26px 0}
+.load{text-align:center;padding:90px 0}.load .swing{font-size:4rem}
+.banner{background:var(--btn);color:var(--btnt);text-align:center;padding:28px 16px;font:900 clamp(1.7rem,7vw,2.8rem) 'Playfair Display'}
+.meter{display:flex;height:34px;margin:20px 0;border:1px solid var(--line);font-weight:600}
+.meter div{display:flex;align-items:center;justify-content:center;transition:width 1.2s ease;width:50%}
+.mA{background:var(--gold);color:#1e1e21}.mB{background:var(--mut);color:#fff}
+li{margin:8px 0}ul{padding-left:20px}
+.cases .ct{font:700 1.4rem 'Playfair Display'}.q{border-left:3px solid var(--gold);padding-left:12px;margin:8px 0;font-style:italic}
+footer{text-align:center;color:var(--mut);font-size:.8rem;padding:40px 20px;border-top:1px solid var(--line);margin-top:50px}
+footer a{color:var(--gold);cursor:pointer;margin:0 8px}
+
+body{background-image:radial-gradient(circle at 50% -10%,rgba(184,146,74,.18),transparent 55%);background-attachment:fixed}
+.ic{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.3em}
+.ic.big{width:2.6rem;height:2.6rem;color:var(--gold);display:block;margin:0 auto 6px}
+.eyebrow{letter-spacing:4px;text-transform:uppercase;font-size:.7rem;color:var(--gold);font-weight:600}.eyebrow.c{text-align:center;margin-top:40px}
+.tag2{font:500 1rem 'Playfair Display',serif;color:var(--mut);letter-spacing:2px;margin-top:14px;text-transform:uppercase;font-size:.8rem}
+.hero{position:relative;overflow:hidden}.bgcol{position:absolute;left:50%;top:0;width:min(560px,130%);height:auto;transform:translateX(-50%);opacity:.07;stroke-width:.5;z-index:-1}
+.orn{display:flex;align-items:center;gap:14px;color:var(--gold);margin:40px 0 0}.orn i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.card{padding:26px;outline:1px solid var(--line);outline-offset:-8px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 10px 30px -14px rgba(184,146,74,.5)}
+.cover{display:flex;gap:18px;align-items:center}.cover .ic.big{margin:0}
+.hero h1{text-shadow:0 2px 30px rgba(184,146,74,.25)}
+.btn{letter-spacing:2px;font-size:.85rem}.btn.big{font-size:1rem}
+.banner{display:flex;flex-direction:column;align-items:center;gap:8px;border:1px solid var(--gold);outline:1px solid var(--gold);outline-offset:-8px;letter-spacing:1px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}.rv.in{opacity:1;transform:none}
+.bar{width:180px;height:2px;background:var(--line);margin:24px auto;overflow:hidden}.bar i{display:block;width:40%;height:100%;background:var(--gold);animation:ld 1.4s ease-in-out infinite}
+@keyframes ld{from{margin-left:-40%}to{margin-left:100%}}
+.step .n{font-size:1.4rem;letter-spacing:4px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.art{display:block;margin:0 auto;width:100%;height:auto;animation:fl 6s ease-in-out infinite}.hero-art{max-width:460px;margin-bottom:10px}.art.thumb{width:110px;flex:none;animation:none}
+.s-g{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.s-f{fill:var(--gold);stroke:none}.s-c{fill:var(--card);stroke:var(--gold);stroke-width:2.5}
+@keyframes fl{50%{transform:translateY(-6px)}}
+.hero h1 span{background:linear-gradient(90deg,var(--gold),#f3e2b0,var(--gold));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 4s linear infinite}@keyframes sh{to{background-position:200% 0}}
+.cover{gap:20px}.cover .ct{font-size:1.5rem}
+
+.hero{isolation:isolate}.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 55% 70% at 50% 0,rgba(243,226,176,.28),transparent 70%),radial-gradient(ellipse 90% 40% at 50% 100%,rgba(184,146,74,.12),transparent);pointer-events:none}
+.hero h1{animation:slamin 1s cubic-bezier(.2,.9,.3,1.15) both}
+@keyframes slamin{from{transform:scale(2.4) rotate(-3deg);opacity:0;letter-spacing:14px}60%{opacity:1}to{transform:none;letter-spacing:-2px}}
+.tag2{transition:opacity .5s;min-height:1.6em}
+.ticker{overflow:hidden;white-space:nowrap;border-block:1px solid var(--gold);background:var(--btn);color:var(--btnt);margin:30px -20px 0;padding:10px 0;font:700 .8rem 'Playfair Display',serif;letter-spacing:4px}
+.ticker div{display:inline-block;animation:tk 28s linear infinite}@keyframes tk{to{transform:translateX(-50%)}}
+.pull{font:900 clamp(1.8rem,7vw,3.2rem)/1.2 'Playfair Display',serif;text-align:center;margin:50px 0 10px;position:relative}
+.pull span{display:block;color:var(--gold);font-size:4rem;line-height:.6;opacity:.6}.pull em{color:var(--gold);font-weight:500}
+.vs{width:58px;height:58px;margin:-30px auto;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;background:var(--btn);color:var(--btnt);border:2px solid var(--gold);border-radius:50%;font:900 1rem 'Playfair Display',serif;letter-spacing:1px;animation:pls 2.4s ease-in-out infinite}
+@keyframes pls{50%{box-shadow:0 0 0 10px rgba(184,146,74,.18)}}
+.load .swing{animation-duration:1.6s}
+.banner.slam{animation:slamb .8s cubic-bezier(.2,.9,.3,1.1) both}
+@keyframes slamb{from{transform:scale(2.6) rotate(-4deg);opacity:0}55%{opacity:1}75%{transform:scale(.97)}to{transform:none}}
+.shk{animation:shk .6s .35s}
+@keyframes shk{20%{transform:translate(-8px,4px)}40%{transform:translate(6px,-5px)}60%{transform:translate(-4px,3px)}80%{transform:translate(2px,-1px)}}
+.flash{position:fixed;inset:0;background:var(--gold);opacity:.55;pointer-events:none;z-index:50;animation:fo .6s forwards}@keyframes fo{to{opacity:0}}
+.spark{position:fixed;left:50%;top:32%;width:6px;height:6px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:51;animation:sp 1.2s ease-out forwards}@keyframes sp{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+.card li{animation:in .7s both}
+.meter{box-shadow:0 0 24px -6px var(--gold)}
+#verdict,#case{position:relative;isolation:isolate}
+.backdrop{position:absolute;left:50%;top:-10px;width:min(980px,150%);transform:translateX(-50%);opacity:.11;z-index:-1;pointer-events:none}
+.gv{transform-box:view-box;transform-origin:22px 68px;animation:strike 2.4s ease-in infinite}
+@keyframes strike{0%,55%{transform:rotate(-50deg)}70%{transform:rotate(0)}75%{transform:rotate(-7deg)}81%,92%{transform:rotate(0)}100%{transform:rotate(-50deg)}}
+.rg{transform-box:view-box;transform-origin:108px 92px;opacity:0;animation:ring 2.4s ease-out infinite}
+@keyframes ring{0%,69%{opacity:0;transform:scale(.2)}71%{opacity:1;transform:scale(.4)}100%{opacity:0;transform:scale(3.5)}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-scales" viewBox="0 0 24 24"><path d="M12 3v18M6 21h12M4 7h16M4 7l-3 7a3 3 0 006 0zM20 7l-3 7a3 3 0 006 0z"/></symbol>
+<symbol id="i-gavel" viewBox="0 0 24 24"><path d="M13 3l8 8-3 3-8-8zM11 8l-8 8 3 3 8-8M3 21h9"/></symbol>
+<symbol id="i-columns" viewBox="0 0 24 24"><path d="M3 9l9-6 9 6zM5 11v7M10 11v7M14 11v7M19 11v7M3 21h18"/></symbol>
+<symbol id="i-scroll" viewBox="0 0 24 24"><path d="M7 3h11a2 2 0 012 2v13a3 3 0 01-3 3H6a3 3 0 003-3V5a2 2 0 00-2-2zM9 8h7M9 12h7M3 6a3 3 0 013-3"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6zM9 12l2 2 4-4"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h7a2 2 0 012 2v14a2 2 0 00-2-2H4zM20 4h-7a2 2 0 00-2 2v14a2 2 0 012-2h7z"/></symbol>
+<g id="a-court"><circle class="s-f" cx="200" cy="120" r="112" opacity=".08"/><rect class="s-f" x="20" y="226" width="360" height="9" opacity=".5"/><rect class="s-f" x="40" y="217" width="320" height="9" opacity=".7"/><rect class="s-f" x="58" y="204" width="284" height="13"/><rect class="s-f" x="70" y="188" width="260" height="16"/><rect class="s-f" x="79" y="90" width="22" height="6"/><rect class="s-c" x="82" y="96" width="16" height="92"/><rect class="s-f" x="123" y="90" width="22" height="6"/><rect class="s-c" x="126" y="96" width="16" height="92"/><rect class="s-f" x="167" y="90" width="22" height="6"/><rect class="s-c" x="170" y="96" width="16" height="92"/><rect class="s-f" x="211" y="90" width="22" height="6"/><rect class="s-c" x="214" y="96" width="16" height="92"/><rect class="s-f" x="255" y="90" width="22" height="6"/><rect class="s-c" x="258" y="96" width="16" height="92"/><rect class="s-f" x="299" y="90" width="22" height="6"/><rect class="s-c" x="302" y="96" width="16" height="92"/><rect class="s-f" x="64" y="76" width="272" height="14"/><path class="s-g" d="M56 76L200 16l144 60z"/><circle class="s-g" cx="200" cy="54" r="12"/><path class="s-g" d="M200 46v16M193 62h14M190 50h20"/></g>
+<g id="a-phone"><rect class="s-c" x="38" y="6" width="44" height="78" rx="7"/><rect class="s-g" x="45" y="20" width="26" height="10" rx="4"/><rect class="s-f" x="49" y="37" width="26" height="10" rx="4"/><rect class="s-g" x="45" y="54" width="20" height="10" rx="4"/><path class="s-g" d="M92 14l8-8M96 26h12M90 8V0"/></g>
+<g id="a-house"><path class="s-g" d="M16 46L60 12l44 34z"/><rect class="s-c" x="26" y="46" width="68" height="36"/><rect class="s-f" x="52" y="56" width="16" height="26"/><rect class="s-g" x="33" y="54" width="13" height="13"/><rect class="s-g" x="74" y="54" width="13" height="13"/></g>
+<g id="a-laptop"><rect class="s-c" x="22" y="12" width="76" height="52" rx="3"/><path class="s-g" d="M22 28h76M47 28v36M72 28v36M22 44h76" stroke-width="1"/><rect class="s-f" x="47" y="44" width="25" height="10" opacity=".75"/><path class="s-f" d="M10 68h100l-9 9H19z"/><circle class="s-c" cx="98" cy="18" r="11"/><path class="s-g" d="M98 18v-6M98 18l5 3"/></g>
+<g id="a-block"><path class="s-g" d="M30 62l-12-5M26 72H10M34 52l-8-9"/><rect class="s-f" x="30" y="80" width="100" height="14" rx="2"/><g transform="rotate(-25 92 44)"><rect class="s-f" x="86" y="46" width="9" height="38" rx="3"/><rect class="s-c" x="60" y="20" width="62" height="26" rx="6"/><rect class="s-f" x="56" y="24" width="7" height="18"/><rect class="s-f" x="119" y="24" width="7" height="18"/></g></g><g id="a-bench"><circle class="s-f" cx="200" cy="80" r="86" opacity=".1"/><rect class="s-f" x="0" y="170" width="400" height="30" opacity=".25"/><path class="s-g" d="M30 170V80a30 30 0 0160 0v90zM60 50v120M30 112h60M310 170V80a30 30 0 0160 0v90zM340 50v120M310 112h60"/><rect class="s-f" x="101" y="36" width="20" height="6"/><rect class="s-c" x="104" y="42" width="14" height="128"/><rect class="s-f" x="279" y="36" width="20" height="6"/><rect class="s-c" x="282" y="42" width="14" height="128"/><circle class="s-g" cx="200" cy="64" r="32"/><path class="s-g" d="M200 40v44M188 84h24M180 52h40M180 52l-6 16a6 6 0 0012 0zM220 52l-6 16a6 6 0 0012 0z"/><rect class="s-f" x="110" y="106" width="180" height="9"/><rect class="s-c" x="120" y="115" width="160" height="55"/><path class="s-g" d="M150 123v40M180 123v40M210 123v40M240 123v40" stroke-width="1.5"/><rect class="s-c" x="188" y="96" width="24" height="10" rx="2"/></g></defs></svg><header><div class="brand" onclick="go('home')"><svg class="ic" ><use href="#i-scales"/></svg>Objection!!</div><button class="tog" id="tog" aria-label="Toggle theme">◐</button></header>
+
+<main class="wrap">
+<section class="view on" id="home">
+<div class="hero"><svg class="art hero-art" viewBox="0 0 400 240"><use href="#a-court"/></svg>
+<div class="eyebrow">Est. for the everyday disputes</div>
+<div class="swing" style="color:var(--gold)"><svg class="ic" style="width:3.4rem;height:3.4rem"><use href="#i-scales"/></svg></div>
+<h1>Objection<span>!!</span></h1>
+<div class="tag">Where every side gets fair hearing</div>
+<div class="sub">when opinions clash, let logic decide</div>
+<div class="tag2" id="rot">Order in the court of everyday life.</div>
+<div class="center"><button class="btn big" onclick="go('case')">Start a Case</button></div></div>
+<div class="ticker"><div><span>OBJECTION! ◆ SUSTAINED ◆ OVERRULED ◆ ORDER IN THE COURT ◆ THE COURT WILL HEAR BOTH SIDES ◆ </span><span>OBJECTION! ◆ SUSTAINED ◆ OVERRULED ◆ ORDER IN THE COURT ◆ THE COURT WILL HEAR BOTH SIDES ◆ </span></div></div>
+<div class="orn"><i></i><svg class="ic" ><use href="#i-gavel"/></svg><i></i></div>
+<div class="eyebrow c">The Proceedings</div><h2 style="margin-top:6px">How it works</h2>
+<div class="grid"><div class="card step"><svg class="ic big"><use href="#i-scroll"/></svg><div class="n">I</div><b>Tell both sides</b><div class="small">Each party submits an equal, uninterrupted statement, by text, voice or evidence.</div></div>
+<div class="card step"><svg class="ic big"><use href="#i-book"/></svg><div class="n">II</div><b>AI analyses</b><div class="small">The court weighs context, fairness and practicality, with equal weight to both.</div></div>
+<div class="card step"><svg class="ic big"><use href="#i-gavel"/></svg><div class="n">III</div><b>Get your verdict</b><div class="small">A clear ruling, a fault split and one practical way forward.</div></div></div>
+<div class="orn"><i></i><svg class="ic" ><use href="#i-scales"/></svg><i></i></div>
+<div class="eyebrow c">From the Docket</div><h2 style="margin-top:6px">Example disputes</h2>
+<div class="grid"><div class="card"><svg class="ic" ><use href="#i-shield"/></svg> <b>The screenshot</b><div class="small">A private message, publicly revealed. Where does honesty end and betrayal begin?</div></div>
+<div class="card"><svg class="ic" ><use href="#i-columns"/></svg> <b>The visitor</b><div class="small">A friend stays a full week. Whose home is it, exactly?</div></div>
+<div class="card"><svg class="ic" ><use href="#i-book"/></svg> <b>Lunch-break meetings</b><div class="small">Available on the calendar, unavailable in principle.</div></div></div>
+<div class="center"><button class="btn ghost" onclick="go('cases')">View Case Files</button></div>
+<div class="orn"><i></i><svg class="ic" ><use href="#i-columns"/></svg><i></i></div>
+<div class="eyebrow c">The Courtroom</div><svg class="art" style="max-width:580px;margin-top:10px" viewBox="0 0 400 200"><use href="#a-bench"/></svg><blockquote class="pull"><span>“</span>The truth does not take sides.<br><em>Neither do we.</em></blockquote><div class="eyebrow c">Before You Proceed</div><h2 style="margin-top:6px">Frequently Asked Questions</h2>
+<details><summary>How does Objection!! decide?</summary><p>An AI model examines both statements step by step, weighing context, fairness and real-world practicality, and commits to a clear ruling.</p></details>
+<details><summary>Is it really unbiased?</summary><p>Both parties receive exactly equal weight. The court is instructed to disregard who writes more, who is more emotional and who speaks first. No AI is infallible, so treat the ruling as a fair, reasoned second opinion.</p></details>
+<details><summary>Is my data private?</summary><p>Your statements are sent to an AI model solely to produce the verdict. Please avoid including sensitive personal information.</p></details>
+<details><summary>Can I add voice or screenshots?</summary><p>Yes. Each party may dictate their statement by voice (browser support varies) and attach a screenshot or photo as evidence.</p></details>
+<details><summary>Is this legal advice?</summary><p>No. Objection!! offers AI guidance for everyday disagreements and is not a substitute for a lawyer.</p></details>
+<div class="hint"><b>↓</b>scroll to continue</div>
+</section>
+
+<section class="view" id="case"><svg class="backdrop" viewBox="0 0 400 200"><use href="#a-bench"/></svg>
+<div class="hero" style="padding-bottom:0"><svg class="art" style="max-width:240px" viewBox="0 0 400 240"><use href="#a-court"/></svg><div class="eyebrow">The court is in session</div><h1 style="font-size:clamp(2.4rem,11vw,4rem)">Start a Case</h1><div class="sub">when opinions clash, let logic decide</div><div class="tag2">Present your case. Respect the verdict.</div></div>
+<div id="cards"></div>
+<div class="center"><button class="btn big" id="go" disabled>Deliver Verdict</button></div>
+<div class="hint"><b>↓</b>scroll to continue</div>
+</section>
+
+<section class="view" id="load"><div class="load"><svg class="art" style="max-width:280px" viewBox="0 0 160 110"><circle class="rg s-g" cx="108" cy="92" r="10"/><rect class="s-f" x="78" y="92" width="74" height="14" rx="2"/><g class="gv"><rect class="s-f" x="22" y="64" width="78" height="8" rx="3"/><rect class="s-c" x="94" y="48" width="18" height="44" rx="5"/><path class="s-g" d="M94 58h18M94 82h18"/></g></svg><h2>Your case is being reviewed...</h2><div class="sub" id="lmsg">The court is in deliberation. All rise.</div><div class="bar"><i></i></div></div></section>
+
+<section class="view" id="verdict"><svg class="backdrop" viewBox="0 0 400 200"><use href="#a-bench"/></svg>
+<svg class="art" style="max-width:170px" viewBox="0 0 140 100"><use href="#a-block"/></svg><div class="eyebrow c" style="margin-top:6px">The Court Rules</div><div class="banner"><svg class="ic" style="width:2rem;height:2rem"><use href="#i-gavel"/></svg><div id="banner"></div></div>
+<div class="meter"><div class="mA" id="mA"></div><div class="mB" id="mB"></div></div>
+<div class="grid"><div class="card"><h3>Party A</h3><div class="small">Key points</div><ul id="pA"></ul></div><div class="card"><h3>Party B</h3><div class="small">Key points</div><ul id="pB"></ul></div></div>
+<div class="card"><h3><svg class="ic" ><use href="#i-scroll"/></svg> Final Judgment</h3><p id="reason"></p><h3 style="margin-top:16px">Want to move to next?</h3><p id="next"></p></div>
+<div class="center"><button class="btn" id="share">Share Verdict</button> <button class="btn ghost" onclick="reset()">New Case</button></div>
+</section>
+
+<section class="view" id="safe"><div class="card center"><div style="font-size:3rem">🤍</div><h2 style="margin-top:8px">This is bigger than a verdict</h2><p id="safemsg"></p><button class="btn" onclick="reset()">Back to start</button></div></section>
+
+<section class="view cases" id="cases">
+<div class="eyebrow c">The Archive</div><h2 style="margin-top:6px">Case Files</h2><div class="sub" style="text-align:center">Everyday disputes, formally adjudicated.</div>
+<div id="covers"><div class="card cover"><svg class="art thumb" viewBox="0 0 120 90"><use href="#a-phone"/></svg><div><div class="eyebrow">Case 1</div><div class="ct">The screenshot</div></div></div>
+<div class="card cover"><svg class="art thumb" viewBox="0 0 120 90"><use href="#a-house"/></svg><div><div class="eyebrow">Case 2</div><div class="ct">The Private Photo</div></div></div>
+<div class="card cover"><svg class="art thumb" viewBox="0 0 120 90"><use href="#a-laptop"/></svg><div><div class="eyebrow">Case 3</div><div class="ct">Work from home dispute</div></div></div>
+<div class="center"><button class="btn big" id="init">Initiate</button></div></div>
+<div id="details" style="display:none"></div>
+<div class="center"><button class="btn ghost" id="back">← Back</button></div>
+</section>
+</main>
+<footer><svg class="ic" style="width:2rem;height:2rem;color:var(--gold)"><use href="#i-scales"/></svg><p class="serif" style="font-style:italic;font-size:1.1rem;color:var(--gold)">Justice is not a matter of volume.</p><p>Objection!! provides AI guidance for everyday disagreements. It is not legal advice.</p><button class="tog" style="width:auto;padding:0 14px" id="tog2">◐ Theme</button><p><a onclick="go('home')">Home</a><a onclick="go('case')">Start a Case</a><a onclick="go('cases')">Samples</a></p></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const root=document.documentElement;
+function setTheme(t){root.dataset.theme=t;try{localStorage.setItem('obj-theme',t)}catch(e){}}
+try{const s=localStorage.getItem('obj-theme');if(s)root.dataset.theme=s}catch(e){}
+function flip(){const dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;setTheme(dark?'light':'dark')}
+$('tog').onclick=$('tog2').onclick=flip;
+var ph;function go(id){if(id!=='load')clearInterval(ph);setTimeout(reveal,50);document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id===id));scrollTo({top:0})}
+
+const data={A:{text:'',name:'',img:null},B:{text:'',name:'',img:null}};
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+function build(){$('cards').innerHTML=['A','B'].map(p=>`<div class="card"><div class="pt">Party ${p}</div>
+<div class="small">${p==='A'?'Describe your situation.':'Present your perspective.'}</div>
+<input type="text" id="n${p}" placeholder="Name (optional)" style="margin-top:10px">
+<textarea id="t${p}" placeholder="Your side of the story..."></textarea>
+<div class="row"><button class="mini" id="m${p}">🎙 Audio</button><label class="mini">📎 Submit your Evidence<input type="file" accept="image/*" id="f${p}" hidden></label></div>
+<img class="thumb" id="i${p}" style="display:none" alt="Evidence thumbnail"></div>`).join('<div class="vs">VS</div>');
+['A','B'].forEach(p=>{
+ $('t'+p).oninput=e=>{data[p].text=e.target.value;chk()};
+ $('n'+p).oninput=e=>data[p].name=e.target.value;
+ $('f'+p).onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{data[p].img=r.result;const i=$('i'+p);i.src=r.result;i.style.display='block'};r.readAsDataURL(f)};
+ const m=$('m'+p);
+ if(!SR){m.onclick=()=>alert('Voice input is not supported in this browser.');return}
+ let rec=null;
+ m.onclick=()=>{if(rec){rec.stop();return}
+  rec=new SR();rec.interimResults=false;rec.lang=navigator.language||'en-US';
+  rec.onresult=e=>{const t=[...e.results].map(r=>r[0].transcript).join(' ');const ta=$('t'+p);ta.value=(ta.value+' '+t).trim();data[p].text=ta.value;chk()};
+  rec.onend=()=>{rec=null;m.classList.remove('rec');m.textContent='🎙 Audio'};
+  rec.onerror=()=>{};rec.start();m.classList.add('rec');m.textContent='⏺ Listening...'}
+});}
+function chk(){$('go').disabled=!(data.A.text.trim()&&data.B.text.trim())}
+build();
+
+let last='';
+$('go').onclick=async()=>{
+ go('load');phases();
+ const nA=data.A.name.trim()||'Party A',nB=data.B.name.trim()||'Party B';
+ const prompt=`You are an impartial judge for everyday disputes (ages 15-30: friends, couples, roommates, teammates, coworkers).
+Rules: give both parties EXACTLY equal weight. Do not favour whoever writes more, is more emotional, or goes first. Reason step by step about context, fairness and real-life practicality. Always commit to a clear verdict; never say "it depends". Note: party order is arbitrary.
+If the case involves abuse, self-harm, or serious crime, do NOT judge: set "safety" to true and write a short caring message in "message" suggesting real help.
+Party A (${nA}) says: """${data.A.text}"""${data.A.img?'\n(Party A attached a screenshot as evidence, which you cannot see.)':''}
+Party B (${nB}) says: """${data.B.text}"""${data.B.img?'\n(Party B attached a screenshot as evidence, which you cannot see.)':''}
+Return ONLY JSON: {"safety":boolean,"message":string,"winner":"A"|"B"|"both","splitA":integer 0-100 (A's justified share; B is 100-splitA),"pointsA":[up to 5 short creative one-line strings],"pointsB":[up to 5 short creative one-line strings],"reasoning":"one paragraph","next":"one practical suggestion"}
+Keep the winner consistent with the split. Write in polished, professional yet accessible language with a touch of gravitas; avoid slang. Refer to parties as Party A / Party B.`;
+ try{
+  const sample=await claude.use('sample');if(!sample)throw {code:'none'};
+  const v=await sample.json(prompt,{cache:false});
+  if(v.safety){$('safemsg').textContent=v.message||'If anyone is in danger or hurting, please reach out to someone you trust or a local support service.';go('safe');return}
+  show(v)
+ }catch(e){
+  $('safemsg').textContent=e&&e.code==='not_granted'?'AI access was declined, so no verdict could be delivered. Try again and allow access when asked.':'The court could not be reached right now. Please try again in a moment.';go('safe')}
+};
+function show(v){
+ const a=Math.max(0,Math.min(100,Math.round(v.splitA)));
+ $('banner').textContent=v.winner==='A'?'Party A is right':v.winner==='B'?'Party B is right':'Both are partly right';
+ $('mA').style.width='50%';$('mB').style.width='50%';
+ $('mA').textContent='A '+a+'%';$('mB').textContent='B '+(100-a)+'%';
+ const li=x=>(x||[]).slice(0,5).map(s=>'<li></li>');
+ ['A','B'].forEach(p=>{const ul=$('p'+p);ul.innerHTML='';(v['points'+p]||[]).slice(0,5).forEach((s,k)=>{const l=document.createElement('li');l.textContent=s;l.style.animationDelay=(1.6+k*.3)+'s';ul.appendChild(l)})});
+ $('reason').textContent=v.reasoning;$('next').textContent=v.next;
+ last=`Objection!! verdict: ${$('banner').textContent} (A ${a}% | B ${100-a}%). ${v.reasoning} Next step: ${v.next}`;
+ go('verdict');slam();setTimeout(()=>{$('mA').style.width=a+'%';$('mB').style.width=(100-a)+'%'},1000)
+}
+$('share').onclick=async()=>{try{await navigator.clipboard.writeText(last);$('share').textContent='Copied!'}catch(e){prompt('Copy your verdict:',last)}setTimeout(()=>$('share').textContent='Share Verdict',2000)};
+function reset(){data.A={text:'',name:'',img:null};data.B={text:'',name:'',img:null};build();chk();go('home')}
+
+const cases=[
+['Case 1','The screenshot','“I sent you that message privately. You had no right to screenshot it and show everyone.”','“I showed it because you were telling everyone a completely different version of what happened. I wanted people to know the truth.”','Sharing a private message is a breach of trust, even with a reason. The better route was to confront the issue directly.','Party A — 70% | Party B — 30%'],
+['Case 2','The Private Photo','“You invited your friend to stay at our apartment for an entire week without asking me. I live here too.”','“It\'s my room, and my friend isn\'t bothering you. I don\'t need permission every time someone visits me.”','A short visit may be reasonable, but an extended stay affects shared living space and should have been discussed beforehand.','Party A — 70% | Party B — 30%'],
+['Case 3','Work from home dispute','“You keep scheduling meetings during my lunch break because you know I\'m working from home.”','“Your calendar showed you as available. If you had a fixed lunch break, you should have blocked it.”','Both are partly responsible. Party A should clearly mark unavailable time, while Party B should avoid repeatedly scheduling over a known personal break once the issue has been raised.','Party A — 45% | Party B — 55%']];
+$('details').innerHTML=cases.map((c,i)=>`<div class="card"><svg class="art thumb" style="float:right;margin:0 0 8px 12px;width:90px" viewBox="0 0 120 90"><use href="#a-${['phone','house','laptop'][i]}"/></svg><div class="small">${c[0]}</div><div class="ct">${c[1]}</div>
+<p class="eyebrow">Party A</p><div class="q">${c[2]}</div><p class="eyebrow">Party B</p><div class="q">${c[3]}</div>
+<p><b>Conclusion:</b> ${c[4]}</p><p class="serif" style="color:var(--gold);font-weight:700">Verdict: ${c[5]}</p></div>`).join('');
+$('init').onclick=()=>{$('covers').style.display='none';$('details').style.display='block';scrollTo({top:0})};
+$('back').onclick=()=>{if($('details').style.display==='block'){$('details').style.display='none';$('covers').style.display='block'}else go('home')};
+document.querySelector('[onclick="go(\'cases\')"]').addEventListener('click',()=>{$('details').style.display='none';$('covers').style.display='block'});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+function reveal(){document.querySelectorAll('.card:not(.rv),h2:not(.rv),details:not(.rv),.orn:not(.rv)').forEach((el,i)=>{el.classList.add('rv');el.style.transitionDelay=(i%3)*90+'ms';io.observe(el)})}
+
+function phases(){const m=['The court is called to order…','Reading Party A’s statement…','Reading Party B’s statement…','Weighing the evidence…','Deliberating in chambers…','The court is ready to rule…'];let i=0;$('lmsg').textContent=m[0];clearInterval(ph);ph=setInterval(()=>{i=Math.min(i+1,m.length-1);$('lmsg').textContent=m[i]},2200)}
+function slam(){const b=document.querySelector('#verdict .banner');b.classList.remove('slam');void b.offsetWidth;b.classList.add('slam');
+ const f=document.createElement('div');f.className='flash';document.body.appendChild(f);setTimeout(()=>f.remove(),700);
+ const m=document.querySelector('main');m.classList.remove('shk');void m.offsetWidth;m.classList.add('shk');
+ for(let i=0;i<30;i++){const d=document.createElement('i');d.className='spark';const an=Math.random()*6.28,r=120+Math.random()*180;d.style.setProperty('--dx',Math.cos(an)*r+'px');d.style.setProperty('--dy',Math.sin(an)*r+'px');document.body.appendChild(d);setTimeout(()=>d.remove(),1300)}}
+const L=['Order in the court of everyday life.','Every story has two sides.','The truth rarely raises its voice.','All rise. Court is now in session.'];let li=0;
+setInterval(()=>{const e=$('rot');e.style.opacity=0;setTimeout(()=>{li=(li+1)%L.length;e.textContent=L[li];e.style.opacity=1},500)},3800);
+reveal();
+</script></body></html>
